@@ -18,7 +18,7 @@ INSERT INTO Categorias (Nome) VALUES
 
 -- Criar tabela Itens
 CREATE TABLE Itens (
-    UPC_A INT PRIMARY KEY,
+    UPC_A BIGINT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
     Categoria INT,
     Marca VARCHAR(100),
@@ -82,7 +82,7 @@ INSERT INTO Itens (UPC_A, Nome, Categoria, Marca, Uni_Grand, Num_Grand) VALUES
 
 -- Criar tabela Mercado
 CREATE TABLE Mercado (
-    CNPJ INT PRIMARY KEY,
+    CNPJ BIGINT PRIMARY KEY,
     ItensMercado TEXT,
     Nome VARCHAR(100) NOT NULL,
     Rua VARCHAR(100),
@@ -100,8 +100,8 @@ INSERT INTO Mercado (CNPJ, ItensMercado, Nome, Rua, CEP) VALUES
 -- Criar tabela Preço de Mercado
 CREATE TABLE PrecoMercado (
     id SERIAL PRIMARY KEY,
-    Item INT,
-    Mercado INT,
+    Item BIGINT,
+    Mercado BIGINT,
     Preco FLOAT,
     FOREIGN KEY (Item) REFERENCES Itens(UPC_A),
     FOREIGN KEY (Mercado) REFERENCES Mercado(CNPJ)
