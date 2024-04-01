@@ -1,13 +1,15 @@
-package br.com.uabp.model;
+/*package br.com.uabp.model;
 
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
 @Entity
 public class Item implements Serializable{
+    @EmbeddedId // A definir
 
     private Integer upc_a;
     private String nome;
@@ -61,3 +63,4 @@ public class Item implements Serializable{
     }
     
 }
+*/

@@ -1,13 +1,15 @@
-package br.com.uabp.model;
+/*package br.com.uabp.model;
 
 import java.io.Serializable;
 
 import org.hibernate.mapping.List;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
 @Entity
 public class OrdenacaoListagem implements Serializable{
+    @EmbeddedId // A definir
 
     private String tipo;
 
@@ -23,3 +25,4 @@ public class OrdenacaoListagem implements Serializable{
     }
 
 }
+*/

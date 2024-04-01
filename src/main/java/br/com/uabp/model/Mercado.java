@@ -1,16 +1,18 @@
-package br.com.uabp.model;
+/*package br.com.uabp.model;
 
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Mercado implements Serializable{
-
+    @EmbeddedId // A definir
+    
     private Integer cnpj;
     private String nome;
     private String rua;
@@ -51,3 +53,4 @@ public class Mercado implements Serializable{
     }
 
 }
+*/
