@@ -1,11 +1,13 @@
-package br.com.uabp.model;
+/*package br.com.uabp.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
 @Entity
 public class PrecoMercado implements Serializable{
+    @EmbeddedId // A definir
 
     private Integer upc_a;
     private Float preco;
@@ -24,3 +26,4 @@ public class PrecoMercado implements Serializable{
     }
     
 }
+*/
