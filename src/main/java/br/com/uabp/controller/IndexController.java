@@ -40,7 +40,7 @@ public class IndexController {
         }   
     }
     
-    // Cadastrano usuario
+    // Cadastrando usuario
     @PostMapping(value="/", produces="application/json")
     public ResponseEntity<Usuario> cadastrar (@RequestBody Usuario usuario){    
 
