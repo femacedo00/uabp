@@ -24,19 +24,19 @@ SET default_table_access_method = heap;
 -- Name: categorias; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.categorias (
+CREATE TABLE uabp.categorias (
     id integer NOT NULL,
     nome character varying(100) NOT NULL
 );
 
 
-ALTER TABLE public.categorias OWNER TO postgres;
+ALTER TABLE uabp.categorias OWNER TO postgres;
 
 --
 -- Name: categorias_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.categorias_id_seq
+CREATE SEQUENCE uabp.categorias_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -45,20 +45,20 @@ CREATE SEQUENCE public.categorias_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.categorias_id_seq OWNER TO postgres;
+ALTER TABLE uabp.categorias_id_seq OWNER TO postgres;
 
 --
 -- Name: categorias_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.categorias_id_seq OWNED BY public.categorias.id;
+ALTER SEQUENCE uabp.categorias_id_seq OWNED BY uabp.categorias.id;
 
 
 --
 -- Name: itens; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.itens (
+CREATE TABLE uabp.itens (
     upc_a bigint NOT NULL,
     nome character varying(100) NOT NULL,
     categoria integer,
@@ -68,13 +68,13 @@ CREATE TABLE public.itens (
 );
 
 
-ALTER TABLE public.itens OWNER TO postgres;
+ALTER TABLE uabp.itens OWNER TO postgres;
 
 --
 -- Name: mercado; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.mercado (
+CREATE TABLE uabp.mercado (
     cnpj bigint NOT NULL,
     itensmercado text,
     nome character varying(100) NOT NULL,
@@ -83,13 +83,13 @@ CREATE TABLE public.mercado (
 );
 
 
-ALTER TABLE public.mercado OWNER TO postgres;
+ALTER TABLE uabp.mercado OWNER TO postgres;
 
 --
 -- Name: preco_mercado; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.preco_mercado (
+CREATE TABLE uabp.preco_mercado (
     id integer NOT NULL,
     item bigint,
     mercado bigint,
@@ -97,13 +97,13 @@ CREATE TABLE public.preco_mercado (
 );
 
 
-ALTER TABLE public.preco_mercado OWNER TO postgres;
+ALTER TABLE uabp.preco_mercado OWNER TO postgres;
 
 --
 -- Name: preco_mercado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.preco_mercado_id_seq
+CREATE SEQUENCE uabp.preco_mercado_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -112,20 +112,20 @@ CREATE SEQUENCE public.preco_mercado_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.preco_mercado_id_seq OWNER TO postgres;
+ALTER TABLE uabp.preco_mercado_id_seq OWNER TO postgres;
 
 --
 -- Name: preco_mercado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.preco_mercado_id_seq OWNED BY public.preco_mercado.id;
+ALTER SEQUENCE uabp.preco_mercado_id_seq OWNED BY uabp.preco_mercado.id;
 
 
 --
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.usuario (
+CREATE TABLE uabp.usuario (
     id bigint NOT NULL,
     login character varying(255),
     nome character varying(255),
@@ -133,29 +133,29 @@ CREATE TABLE public.usuario (
 );
 
 
-ALTER TABLE public.usuario OWNER TO postgres;
+ALTER TABLE uabp.usuario OWNER TO postgres;
 
 --
 -- Name: categorias id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.categorias ALTER COLUMN id SET DEFAULT nextval('public.categorias_id_seq'::regclass);
+ALTER TABLE ONLY uabp.categorias ALTER COLUMN id SET DEFAULT nextval('uabp.categorias_id_seq'::regclass);
 
 
 --
 -- Name: preco_mercado id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.preco_mercado ALTER COLUMN id SET DEFAULT nextval('public.preco_mercado_id_seq'::regclass);
+ALTER TABLE ONLY uabp.preco_mercado ALTER COLUMN id SET DEFAULT nextval('uabp.preco_mercado_id_seq'::regclass);
 
 
 --
 -- Data for Name: categorias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.categorias (id, nome) FROM stdin;
-1	AÁougue
-2	Frios e laticÌnios
+COPY uabp.categorias (id, nome) FROM stdin;
+1	A√ßougue
+2	Frios e latic√≠nios
 3	Adega e bebidas
 4	Higiene e limpeza
 5	Hortifruti e mercearia
@@ -170,57 +170,57 @@ COPY public.categorias (id, nome) FROM stdin;
 -- Data for Name: itens; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.itens (upc_a, nome, categoria, marca, uni_grand, num_grand) FROM stdin;
-12345678905	Carne bovina	1	FictÌcia Carnes	kg	1
-123456789012	Queijo muÁarela	2	Queijos do Vale	g	500
-234567890123	Vinho tinto	3	VinÌcola do Sul	ml	750
-345678901234	Sabonete lÌquido	4	Limpo e Perfumado	ml	250
-456789012345	MaÁ„	5	Frutas Saborosas	kg	1
-567890123456	P„o francÍs	6	Panificadora P„o Quente	unidade	1
+COPY uabp.itens (upc_a, nome, categoria, marca, uni_grand, num_grand) FROM stdin;
+12345678905	Carne bovina	1	Fict√≠cia Carnes	kg	1
+123456789012	Queijo mu√ßarela	2	Queijos do Vale	g	500
+234567890123	Vinho tinto	3	Vin√≠cola do Sul	ml	750
+345678901234	Sabonete l√≠quido	4	Limpo e Perfumado	ml	250
+456789012345	Ma√ß√£	5	Frutas Saborosas	kg	1
+567890123456	P√£o franc√™s	6	Panificadora P√£o Quente	unidade	1
 678901234567	Sardinha em lata	7	Conservas Del Mar	unidade	1
 789012345678	Arroz	8	Cereal do Campo	kg	1
-890123456789	Frango assado	9	Frangos do SÌtio	kg	1
-901234567890	Leite integral	2	LaticÌnios Felizes	l	1
+890123456789	Frango assado	9	Frangos do S√≠tio	kg	1
+901234567890	Leite integral	2	Latic√≠nios Felizes	l	1
 123123123123	Ovos	5	Granja do Sol	unidade	12
 234234234234	Cerveja	3	Cervejaria da Amizade	ml	350
-345345345345	Papel higiÍnico	4	Limpeza Total	rolo	4
-456456456456	Macarr„o	8	Massa Leve	g	500
+345345345345	Papel higi√™nico	4	Limpeza Total	rolo	4
+456456456456	Macarr√£o	8	Massa Leve	g	500
 567567567567	Desinfetante	4	Cheiro Bom	ml	750
 678678678678	Banana	5	Frutaria Tropical	kg	1
-789789789789	P„o de forma	6	Padaria S„o Jo„o	unidade	1
-890890890890	Feij„o	8	Feij„o Bom	kg	1
-901901901901	CafÈ	5	CafÈ da Manh„	g	500
+789789789789	P√£o de forma	6	Padaria S√£o Jo√£o	unidade	1
+890890890890	Feij√£o	8	Feij√£o Bom	kg	1
+901901901901	Caf√©	5	Caf√© da Manh√£	g	500
 112112112112	Tomate	5	Hortifruti Express	kg	1
 223223223223	Refrigerante	3	Refrescante	l	2
 334334334334	Biscoito recheado	8	Biscoitos Felizes	g	200
 445445445445	Leite condensado	2	Doces Sonhos	ml	395
-556556556556	Cereal matinal	8	Manh„ Saud·vel	g	300
+556556556556	Cereal matinal	8	Manh√£ Saud√°vel	g	300
 667667667667	Detergente	4	Limpinho e Cheiroso	ml	500
 778778778778	Amaciante de roupas	4	Tecido Macio	ml	1500
 889889889889	Atum em lata	7	Peixe do Mar	g	120
-990990990990	AÁ˙car refinado	8	Doce Sabor	kg	1
+990990990990	A√ß√∫car refinado	8	Doce Sabor	kg	1
 111222333444	Salgadinho de milho	8	Snacks Crocantes	g	150
-222333434555	Lombo suÌno	1	Carnes Deliciosas	kg	1
+222333434555	Lombo su√≠no	1	Carnes Deliciosas	kg	1
 333444525666	Iogurte natural	2	Iogurteria	g	150
 444555626777	Cenoura	5	Legumes Frescos	kg	1
-555666177888	P„o de queijo	6	Casa de P„es	unidade	10
-666777818999	Milho em conserva	7	Conservas da RoÁa	g	200
-777888999000	Biscoito de polvilho	8	Biscoitos da VovÛ	g	250
-888999000111	Salm„o	1	Peixaria do Mar	kg	1
-999000111222	¡gua mineral	3	¡gua Pura	l	1.5
-111222333	Sab„o em pÛ	4	Lavanderia Clean	kg	2
-111222333424	PÍssego em calda	7	Doces do SÌtio	g	400
-222333444555	Peito de peru fatiado	2	Frios DelÌcia	g	200
+555666177888	P√£o de queijo	6	Casa de P√£es	unidade	10
+666777818999	Milho em conserva	7	Conservas da Ro√ßa	g	200
+777888999000	Biscoito de polvilho	8	Biscoitos da Vov√≥	g	250
+888999000111	Salm√£o	1	Peixaria do Mar	kg	1
+999000111222	√Ågua mineral	3	√Ågua Pura	l	1.5
+111222333	Sab√£o em p√≥	4	Lavanderia Clean	kg	2
+111222333424	P√™ssego em calda	7	Doces do S√≠tio	g	400
+222333444555	Peito de peru fatiado	2	Frios Del√≠cia	g	200
 333444555666	Vodka	3	Destilados do Leste	l	1
 444555666777	Abacaxi	5	Frutas Tropicais	unidade	1
 555666777888	Azeite de oliva	2	Oliveira Dourada	ml	500
-666777888999	FilÈ de peixe	1	Peixaria MarÌtima	kg	1
-112233445566	Creme de leite	2	LaticÌnios Felizes	ml	1000
-778899001122	Vinagre de maÁ„	8	Vinagre Fino	ml	750
+666777888999	Fil√© de peixe	1	Peixaria Mar√≠tima	kg	1
+112233445566	Creme de leite	2	Latic√≠nios Felizes	ml	1000
+778899001122	Vinagre de ma√ß√£	8	Vinagre Fino	ml	750
 990011223344	Suco de laranja natural	5	Frutas Saborosas	ml	1500
 334455667788	Manteiga	2	Manteiga do Campo	g	200
 556677889900	Queijo cheddar	2	Queijos do Vale	g	250
-778899101122	Geleia de morango	8	Doces da VovÛ	g	400
+778899101122	Geleia de morango	8	Doces da Vov√≥	g	400
 \.
 
 
@@ -228,12 +228,12 @@ COPY public.itens (upc_a, nome, categoria, marca, uni_grand, num_grand) FROM std
 -- Data for Name: mercado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.mercado (cnpj, itensmercado, nome, rua, cep) FROM stdin;
-12345678901234	{"Itens": ["012345678905", "123456789012", "456789012345", "567890123456", "789012345678", "890123456789", "901234567890", "123123123123", "345345345345", "556556556556", "778778778778", "990990990990", "222333434555", "333444525666", "666777818999", "777888999000", "888999000111", "999000111222"]}	Mercado do Jo„o	Rua das Flores, 123	12345-678
+COPY uabp.mercado (cnpj, itensmercado, nome, rua, cep) FROM stdin;
+12345678901234	{"Itens": ["012345678905", "123456789012", "456789012345", "567890123456", "789012345678", "890123456789", "901234567890", "123123123123", "345345345345", "556556556556", "778778778778", "990990990990", "222333434555", "333444525666", "666777818999", "777888999000", "888999000111", "999000111222"]}	Mercado do Jo√£o	Rua das Flores, 123	12345-678
 23456789012345	{"Itens": ["012345678905", "123456789012", "234567890123", "345678901234", "456789012345", "567890123456", "789012345678", "890123456789", "901234567890", "123123123123", "234234234234", "334334334334", "445445445445", "667667667667", "778778778778", "889889889889", "990990990990", "111222333444", "222333444555", "333444555666", "444555666777", "555666777888"]}	Supermercado da Maria	Avenida das Palmeiras, 456	54321-987
 34567890123456	{"Itens": ["012345678905", "234567890123", "345678901234", "456789012345", "567890123456", "789012345678", "890123456789", "901234567890", "112112112112", "223223223223", "334334334334", "445445445445", "556556556556", "667667667667", "778778778778", "889889889889", "990990990990", "111222333444", "222333444555", "333444555666", "444555666777", "555666777888", "666777888999", "777888999000", "888999000111", "999000111222"]}	Mercadinho da Ana	Rua das Oliveiras, 789	98765-432
-45678901234567	{"Itens": ["123123123123", "234234234234", "345345345345", "456456456456", "567567567567", "678678678678", "789789789789", "890890890890", "901901901901", "112112112112", "223223223223", "334334334334", "445445445445", "556556556556", "667667667667", "778778778778", "889889889889", "990990990990", "111222333444", "222333444555", "333444555666", "444555666777", "555666777888", "666777888999", "777888999000", "888999000111", "999000111222"]}	Mini Mercado do JosÈ	Rua dos Passarinhos, 101	54321-678
-56789012345678	{"Itens": ["112233445566", "334455667788", "556677889900", "778899001122", "990011223344"]}	Supermercado da Daise	Rua das OrquÌdeas, 789	98765-432
+45678901234567	{"Itens": ["123123123123", "234234234234", "345345345345", "456456456456", "567567567567", "678678678678", "789789789789", "890890890890", "901901901901", "112112112112", "223223223223", "334334334334", "445445445445", "556556556556", "667667667667", "778778778778", "889889889889", "990990990990", "111222333444", "222333444555", "333444555666", "444555666777", "555666777888", "666777888999", "777888999000", "888999000111", "999000111222"]}	Mini Mercado do Jos√©	Rua dos Passarinhos, 101	54321-678
+56789012345678	{"Itens": ["112233445566", "334455667788", "556677889900", "778899001122", "990011223344"]}	Supermercado da Daise	Rua das Orqu√≠deas, 789	98765-432
 \.
 
 
@@ -241,7 +241,7 @@ COPY public.mercado (cnpj, itensmercado, nome, rua, cep) FROM stdin;
 -- Data for Name: preco_mercado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.preco_mercado (id, item, mercado, preco) FROM stdin;
+COPY uabp.preco_mercado (id, item, mercado, preco) FROM stdin;
 1	12345678905	12345678901234	52
 2	123456789012	12345678901234	14.27
 3	456789012345	12345678901234	3.1
@@ -346,7 +346,7 @@ COPY public.preco_mercado (id, item, mercado, preco) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (id, login, nome, senha) FROM stdin;
+COPY uabp.usuario (id, login, nome, senha) FROM stdin;
 1	diogo.p.pereira@unesp.br	Diogo	jnhtry65g
 2	fsa.oliveira@unesp.br	Felipe	123456
 \.
@@ -356,21 +356,21 @@ COPY public.usuario (id, login, nome, senha) FROM stdin;
 -- Name: categorias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.categorias_id_seq', 9, true);
+SELECT pg_catalog.setval('uabp.categorias_id_seq', 9, true);
 
 
 --
 -- Name: preco_mercado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.preco_mercado_id_seq', 97, true);
+SELECT pg_catalog.setval('uabp.preco_mercado_id_seq', 97, true);
 
 
 --
 -- Name: categorias categorias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.categorias
+ALTER TABLE ONLY uabp.categorias
     ADD CONSTRAINT categorias_pkey PRIMARY KEY (id);
 
 
@@ -378,7 +378,7 @@ ALTER TABLE ONLY public.categorias
 -- Name: itens itens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.itens
+ALTER TABLE ONLY uabp.itens
     ADD CONSTRAINT itens_pkey PRIMARY KEY (upc_a);
 
 
@@ -386,7 +386,7 @@ ALTER TABLE ONLY public.itens
 -- Name: mercado mercado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.mercado
+ALTER TABLE ONLY uabp.mercado
     ADD CONSTRAINT mercado_pkey PRIMARY KEY (cnpj);
 
 
@@ -394,7 +394,7 @@ ALTER TABLE ONLY public.mercado
 -- Name: preco_mercado preco_mercado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.preco_mercado
+ALTER TABLE ONLY uabp.preco_mercado
     ADD CONSTRAINT preco_mercado_pkey PRIMARY KEY (id);
 
 
@@ -402,24 +402,24 @@ ALTER TABLE ONLY public.preco_mercado
 -- Name: itens itens_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.itens
-    ADD CONSTRAINT itens_categoria_fkey FOREIGN KEY (categoria) REFERENCES public.categorias(id);
+ALTER TABLE ONLY uabp.itens
+    ADD CONSTRAINT itens_categoria_fkey FOREIGN KEY (categoria) REFERENCES uabp.categorias(id);
 
 
 --
 -- Name: preco_mercado preco_mercado_item_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.preco_mercado
-    ADD CONSTRAINT preco_mercado_item_fkey FOREIGN KEY (item) REFERENCES public.itens(upc_a);
+ALTER TABLE ONLY uabp.preco_mercado
+    ADD CONSTRAINT preco_mercado_item_fkey FOREIGN KEY (item) REFERENCES uabp.itens(upc_a);
 
 
 --
 -- Name: preco_mercado preco_mercado_mercado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.preco_mercado
-    ADD CONSTRAINT preco_mercado_mercado_fkey FOREIGN KEY (mercado) REFERENCES public.mercado(cnpj);
+ALTER TABLE ONLY uabp.preco_mercado
+    ADD CONSTRAINT preco_mercado_mercado_fkey FOREIGN KEY (mercado) REFERENCES uabp.mercado(cnpj);
 
 
 --
