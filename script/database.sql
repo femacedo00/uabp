@@ -1,3 +1,17 @@
+-- Criar tabela Usuários
+
+CREATE TABLE Usuario (
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(100),
+    nome VARCHAR(100),
+    senha VARCHAR(100)
+);
+
+-- Inserir categorias
+INSERT INTO Usuario (login, nome, senha) VALUES 
+('diogo.p.pereira@unesp.br', 'Diogo', 'jnhtry65g'),
+('fsa.oliveira@unesp.br	', 'Felipe', '123456');
+
 -- Criar tabela Categorias
 CREATE TABLE Categorias (
     id SERIAL PRIMARY KEY,
