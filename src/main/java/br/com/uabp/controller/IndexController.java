@@ -36,16 +36,7 @@ public class IndexController {
             Optional<Usuario> usuario = usuarioRepository.findById(id);
             return new ResponseEntity(usuario.get(), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity(e, HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Not Found", HttpStatus.NOT_FOUND);
         }   
-    }
-    
-    // Cadastrando usuario
-    @PostMapping(value="/", produces="application/json")
-    public ResponseEntity<Usuario> cadastrar (@RequestBody Usuario usuario){    
-
-        Usuario usuarioSalvo = usuarioRepository.save(usuario);
-
-        return new ResponseEntity(usuarioSalvo, HttpStatus.OK);
     }
 }
