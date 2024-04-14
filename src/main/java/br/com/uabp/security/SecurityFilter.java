@@ -31,10 +31,8 @@ public class SecurityFilter extends OncePerRequestFilter {
         if (token != null) {
 
             var login = tokenService.validateToken(token);
-            System.out.println(login);
             UserDetails user = usuarioRepository.findByLogin(login);
             
-            System.out.println(user);
             // Obtém todas as informações usadas pelos restantes dos filtros
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             // Salva no contexto da autenticação esse usuário
@@ -46,10 +44,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     private String recoverToken(HttpServletRequest request){
         var authHeader = request.getHeader("Authorization");
-        System.out.println("Chegou aki");
-        System.out.println(authHeader);
         if (authHeader == null){
-        System.out.println("Retornando null");
          return null;
         }
         var aux = authHeader.replace("Bearer ", "");
