@@ -15,11 +15,12 @@ public class Mercado implements Serializable{
     
     private Integer cnpj;
     private String nome;
+    private String itensMercado;
     private String rua;
     private String cep;
     private ImageIcon img;
 
-    // @OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mercado", orphanRemoval = true, cascade = CascadeType.ALL)
 
     public Integer getCnpj() {
         return cnpj;
@@ -33,6 +34,12 @@ public class Mercado implements Serializable{
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public String getItensMercado() {
+        return itensMercado;
+    }
+    public void setItensMercado(String itensMercado) {
+        this.itensMercado = itensMercado;
+    }
     public String getRua() {
         return rua;
     }
@@ -45,6 +52,7 @@ public class Mercado implements Serializable{
     public void setCep(String cep) {
         this.cep = cep;
     }
+    
     public ImageIcon getImg() {
         return img;
     }
@@ -52,5 +60,4 @@ public class Mercado implements Serializable{
         this.img = img;
     }
 
-}
-*/
+}*/
