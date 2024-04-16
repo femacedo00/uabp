@@ -1,22 +1,45 @@
-/*package br.com.uabp.model;
+package br.com.uabp.model;
 
-import java.io.Serializable;
+import java.util.List;
 
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class PrecoMercado implements Serializable{
-    @EmbeddedId // A definir
+@Table(name = "preco_mercado")
+public class PrecoMercado{
 
-    private Integer upc_a;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
     private Float preco;
 
-    public Integer getUpc_a() {
-        return upc_a;
+    @ManyToOne
+    @JoinColumn(name = "mercado")
+    private Mercado mercado;
+    
+    @ManyToOne
+    @JoinColumn(name = "item")
+    private Item item;
+
+    public Integer getId() {
+        return id;
     }
-    public void setUpc_a(Integer upc_a) {
-        this.upc_a = upc_a;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Item getItem() {
+        return item;
+    }
+    public void setItem(Item item) {
+        this.item = item;
     }
     public Float getPreco() {
         return preco;
@@ -26,4 +49,3 @@ public class PrecoMercado implements Serializable{
     }
     
 }
-*/

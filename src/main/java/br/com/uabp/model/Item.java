@@ -1,28 +1,41 @@
-/*package br.com.uabp.model;
+package br.com.uabp.model;
 
-import java.io.Serializable;
+import java.util.List;
 
-import javax.swing.ImageIcon;
-
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class Item implements Serializable{
-    @EmbeddedId // A definir
+@Table(name = "itens")
+public class Item {
 
-    private Integer upc_a;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long upc_a;
+    
     private String nome;
-    private String categoria;
     private String marca;
     private String uni_grand;
     private Float num_grand;
-    private ImageIcon img;
 
-    public Integer getUpc_a() {
+    @OneToMany(mappedBy = "item")
+    private List<PrecoMercado> precoMercado;
+
+    @OneToOne
+    @JoinColumn(name = "Categoria")
+    private Categoria categoria;
+
+    public Long getUpc_a() {
         return upc_a;
     }
-    public void setUpc_a(Integer upc_a) {
+    public void setUpc_a(Long upc_a) {
         this.upc_a = upc_a;
     }
     public String getNome() {
@@ -31,10 +44,10 @@ public class Item implements Serializable{
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
     public String getMarca() {
@@ -55,12 +68,4 @@ public class Item implements Serializable{
     public void setNum_grand(Float num_grand) {
         this.num_grand = num_grand;
     }
-    public ImageIcon getImg() {
-        return img;
-    }
-    public void setImg(ImageIcon img) {
-        this.img = img;
-    }
-    
 }
-*/
