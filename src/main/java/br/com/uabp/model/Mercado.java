@@ -14,7 +14,6 @@ public class Mercado{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cnpj;
 
-    // private String itensMercado;
     private String nome;
     private String rua;
     private String cep;
@@ -40,12 +39,6 @@ public class Mercado{
     public void setNome(String nome) {
         this.nome = nome;
     }
-    /*public String getItensMercado() {
-        return itensMercado;
-    }
-    public void setItensMercado(String itensMercado) {
-        this.itensMercado = itensMercado;
-    }*/
     public String getRua() {
         return rua;
     }
