@@ -36,4 +36,11 @@ public class ItemController {
         }
     }
 
+    @PostMapping(value="/", produces="application/json")
+    public ResponseEntity<Item> insertNewItem(@RequestBody Item item){
+        Item itemInserido = itemRepository.save(item);
+
+        return new ResponseEntity(itemInserido, HttpStatus.OK);
+    }
+
 }

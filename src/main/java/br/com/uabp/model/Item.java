@@ -17,13 +17,24 @@ import jakarta.persistence.Table;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long upc_a;
     
     private String nome;
     private String marca;
     private String uni_grand;
     private Float num_grand;
+
+    public Item(){
+
+    }
+
+    public Item(Long upc_a, String nome, String marca, String uni_grand, Float num_grand) {
+        this.upc_a = upc_a;
+        this.nome = nome;
+        this.marca = marca;
+        this.uni_grand = uni_grand;
+        this.num_grand = num_grand;
+    }
 
     @OneToMany(mappedBy = "item")
     private List<PrecoMercado> precoMercado;
