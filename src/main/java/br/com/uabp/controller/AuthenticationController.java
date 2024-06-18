@@ -36,9 +36,10 @@ public class AuthenticationController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         try{
             var auth = this.authenticationManager.authenticate(usernamePassword);
-            var token = tokenService.generateToken((Usuario)auth.getPrincipal());
+            var usuario = (Usuario) auth.getPrincipal();
+            var token = tokenService.generateToken(usuario);
             
-            return ResponseEntity.ok(new LoginResponseDTO(token));
+            return ResponseEntity.ok(new LoginResponseDTO(token, usuario.getNome()));
         }catch(Exception e){
             return ResponseEntity.internalServerError().body(null);
         }
@@ -59,6 +60,15 @@ public class AuthenticationController {
 
         this.usuarioRepository.save(newUser);
 
-        return ResponseEntity.ok().build();
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        try {
+            var auth = this.authenticationManager.authenticate(usernamePassword);
+            var usuario = (Usuario) auth.getPrincipal();
+            var token = tokenService.generateToken(usuario);
+            
+            return ResponseEntity.ok(new LoginResponseDTO(token, usuario.getNome()));
+        } catch(Exception e) {
+            return ResponseEntity.internalServerError().body(null);
+        }
     }
 }
